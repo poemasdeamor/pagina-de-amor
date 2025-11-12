@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Coleção de Poemas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f4e9 0%, #e6dfc8 100%);
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header::after {
+            content: "";
+            display: block;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #f0e68c, #d4af37);
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #2c3e50;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #7f8c8d;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .ad-banner {
+            background: linear-gradient(135deg, #e8e1d1 0%, #f5f0e6 100%);
+            border: 2px dashed #d4af37;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #7f8c8d;
+        }
+
+        .ad-banner h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .ad-banner p {
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .poems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .poem-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poem-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #f0e68c);
+        }
+
+        .poem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .poem-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .poem-excerpt {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #34495e;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+
+        .poem-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .poem-date {
+            font-style: italic;
+        }
+
+        .read-btn {
+            background: linear-gradient(135deg, #d4af37, #f0e68c);
+            color: #2c3e50;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .read-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .ad-sidebar {
+            background: linear-gradient(135deg, #f0e68c 0%, #d4af37 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: bold;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-sidebar h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .ad-sidebar p {
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .poems-section {
+            grid-column: 1;
+        }
+
+        .sidebar {
+            grid-column: 2;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #7f8c8d;
+        }
+
+        .empty-state h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .decorative-flourish {
+            position: absolute;
+            opacity: 0.05;
+            font-size: 6rem;
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            z-index: 0;
+        }
+
+        .flourish-1 {
+            top: 100px;
+            left: 50px;
+        }
+
+        .flourish-2 {
+            bottom: 100px;
+            right: 50px;
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .sidebar {
+                grid-column: 1;
+                order: -1;
+            }
+            
+            .ad-banner {
+                min-height: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .poems-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .poem-card {
+                padding: 25px;
+            }
+            
+            .poem-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .flourish-1, .flourish-2 {
+                display: none;
+            }
+            
+            .ad-banner, .ad-sidebar {
+                min-height: auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decorative-flourish flourish-1">❧</div>
+    <div class="decorative-flourish flourish-2">❧</div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Minha Coleção de Poemas</h1>
+            <div class="subtitle">Versos que nascem da alma</div>
+        </div>
+
+        <!-- Banner de anúncio no topo -->
+        <!-- <div class="ad-banner">
+            <h3>ESPAÇO PARA ANÚNCIO</h3>
+            <p>Insira aqui seu banner publicitário ou mensagem promocional</p>
+        </div> -->
+
+        <div class="main-content">
+            <div class="poems-section">
+                <div class="poems-grid">
+                    <!-- Poema 1: Antes da Lei -->
+                    <div class="poem-card">
+                        <h3 class="poem-title">Antes da Lei</h3>
+                        <p class="poem-excerpt">Houve um tempo em que o mundo não tinha leis. As crianças voavam. Os poetas construíam casas de poesias...</p>
+                        <div class="poem-meta">
+                            <span class="poem-date">3 de Outubro de 2025</span>
+                            <a href="poemas/antes-da-lei.html" class="read-btn">Ler</a>
+                        </div>
+                    </div>
+
+                    <!-- Poema 2: Encantos da alma -->
+                    <div class="poem-card">
+                        <h3 class="poem-title">Encantos da alma</h3>
+                        <p class="poem-excerpt">Quando te vejo, sinto meu coração bater ritmando um calor inexplicável se instalar e uma paz inundar meu ser...</p>
+                        <div class="poem-meta">
+                            <span class="poem-date">11 de Julho de 2024</span>
+                            <a href="poemas/versos-de-amor.html" class="read-btn">Ler</a>
+                        </div>
+                    </div>
+
+                    <!-- Poema 3: Ela Não Sabe -->
+                    <div class="poem-card">
+                        <h3 class="poem-title">Ela Não Sabe</h3>
+                        <p class="poem-excerpt">Ela não sabe que, quando ri no corredor da escola, meu mundo para por três segundos...</p>
+                        <div class="poem-meta">
+                            <span class="poem-date">3 de Outubro de 2025</span>
+                            <a href="poemas/ela-nao-sabe.html" class="read-btn">Ler</a>
+                        </div>
+                    </div>
+
+                    <!-- Poema 4: O Primeiro Olhar -->
+                    <div class="poem-card">
+                        <h3 class="poem-title">O Primeiro Olhar</h3>
+                        <p class="poem-excerpt">Foi só um segundo. Um cruzar de olhares no corredor do tempo, e o universo inteiro se calou...</p>
+                        <div class="poem-meta">
+                            <span class="poem-date">27 de Outubro de 2025</span>
+                            <a href="poemas/o-primeiro-olhar.html" class="read-btn">Ler</a>
+                        </div>
+                    </div>
+
+                    <!-- Poema 5: Cartas que Nunca Foram Enviadas -->
+                    <div class="poem-card">
+                        <h3 class="poem-title">Cartas que Nunca Foram Enviadas</h3>
+                        <p class="poem-excerpt">Escrevi teu nome em papéis que o tempo esqueceu. Confiei segredos a envelopes sem destino...</p>
+                        <div class="poem-meta">
+                            <span class="poem-date">27 de Outubro de 2025</span>
+                            <a href="poemas/cartas-nao-enbiadas.html" class="read-btn">Ler</a>
+                        </div>
+                    </div>
+
+                    <!-- Poema 6: Quando o Amor Parte -->
+                    <div class="poem-card">
+                        <h3 class="poem-title">Quando o Amor Parte</h3>
+                        <p class="poem-excerpt">Não levou as flores. Não apagou os versos. Só fechou a porta — com delicadeza...</p>
+                        <div class="poem-meta">
+                            <span class="poem-date">27 de Outubro de 2025</span>
+                            <a href="poemas/quando-o-amor-parte.html" class="read-btn">Ler</a>
+                        </div>
+                    </div>
+
+                    <!-- Poema 7: As Cicatrizes que Tornam Preciosa -->
+                    <div class="poem-card">
+                        <h3 class="poem-title">As Cicatrizes que Tornam Preciosa</h3>
+                        <p class="poem-excerpt">Não são defeitos. São mapas de sobrevivência. Cada linha no corpo conta uma história de coragem...</p>
+                        <div class="poem-meta">
+                            <span class="poem-date">27 de Outubro de 2025</span>
+                            <a href="poemas/as-cicatrizes.html" class="read-btn">Ler</a>
+                        </div>
+                    </div>
+
+                    <!-- Poema 8: Apaixonar-se por Si Mesmo -->
+                    <div class="poem-card">
+                        <h3 class="poem-title">Apaixonar-se por Si Mesmo</h3>
+                        <p class="poem-excerpt">Por anos, me esqueci. Dei meu tempo a quem não esperava, minha voz a quem não ouvia...</p>
+                        <div class="poem-meta">
+                            <span class="poem-date">27 de Outubro de 2025</span>
+                            <a href="poemas/apaixonar-se-por-si-mesmo.html" class="read-btn">Ler</a>
+                        </div>
+                    </div>
+
+                    <!-- Poema 9: Dois Corações Tímidos -->
+                    <div class="poem-card">
+                        <h3 class="poem-title">Dois Corações Tímidos</h3>
+                        <p class="poem-excerpt">Nós nos olhamos como quem teme o fogo, mas arde em segredo. Trocamos “bom dia” com vozes suaves...</p>
+                        <div class="poem-meta">
+                            <span class="poem-date">27 de Outubro de 2025</span>
+                            <a href="poemas/dois-coraçoes-timidos.html" class="read-btn">Ler</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar com anúncio -->
+            <!-- <div class="sidebar">
+                <div class="ad-sidebar">
+                    <h3>ANÚNCIO LATERAL</h3>
+                    <p>Espaço para publicidade ou promoções</p>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- Banner de anúncio no rodapé -->
+        <!-- <div class="ad-banner" style="margin-top: 40px;">
+            <h3>ESPAÇO PARA ANÚNCIO</h3>
+            <p>Insira aqui seu banner publicitário ou mensagem promocional</p>
+        </div> -->
+    </div>
+</body>
+</html>

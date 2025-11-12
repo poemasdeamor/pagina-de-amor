@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antes da Lei</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f0e6 0%, #e8e1d1 100%);
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ad-banner {
+            background: linear-gradient(135deg, #e8e1d1 0%, #f5f0e6 100%);
+            border: 2px dashed #d4af37;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            color: #7f8c8d;
+        }
+
+        .ad-banner h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .ad-banner p {
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .poetry-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+            width: 100%;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poetry-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #f0e68c, #d4af37);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, transparent);
+            margin: 15px auto;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #2c3e50;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .poem {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #34495e;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .poem p {
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .poem p:last-child {
+            margin-bottom: 0;
+        }
+
+        .decorative-element {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 8rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #d4af37;
+        }
+
+        .decorative-element.top-right {
+            top: 20px;
+            right: 20px;
+        }
+
+        .decorative-element.bottom-left {
+            bottom: 20px;
+            left: 20px;
+            transform: rotate(180deg);
+        }
+
+        .author {
+            text-align: right;
+            margin-top: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #95a5a6;
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .poetry-container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .poem {
+                font-size: 1.2rem;
+            }
+            
+            .decorative-element {
+                font-size: 5rem;
+            }
+            
+            .ad-banner {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .poetry-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .poem {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+            
+            .decorative-element {
+                font-size: 3rem;
+            }
+            
+            .decorative-element.top-right {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .decorative-element.bottom-left {
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            .ad-banner {
+                padding: 15px;
+            }
+            
+            .ad-banner h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Banner de anúncio no topo -->
+        <div class="ad-banner">
+            <h3>ESPAÇO PARA ANÚNCIO</h3>
+            <p>Insira aqui seu banner publicitário ou mensagem promocional</p>
+        </div>
+
+        <div class="poetry-container">
+            <div class="decorative-element top-right">❝</div>
+            <div class="decorative-element bottom-left">❞</div>
+            
+            <div class="header">
+                <h1>Antes da Lei</h1>
+                <div class="subtitle">Uma composição original</div>
+            </div>
+            
+            <div class="poem">
+                <p>Houve um tempo em que o mundo não tinha leis.<br>
+                As crianças voavam.<br>
+                Os poetas construíam casas de poesias.</p>
+
+                <p>Não havia impossível.<br>
+                Mas sim: ainda não foi imaginado.</p>
+
+                <p>As pessoas caminhavam com os pensamentos.<br>
+                As pessoas diziam querer uma casa de diamante<br>
+                e já a tinham.</p>
+
+                <p>O tempo era lento.<br>
+                Um dia poderia durar um minuto ou um ano,<br>
+                dependia do humor coletivo.<br>
+                A noite chegava quando todos concordavam<br>
+                que já era hora de sonhar dormindo.</p>
+
+                <p>A morte era uma escolha que não existia.<br>
+                Cada mente era um pincel.</p>
+
+                <p>Na Inglaterra nasceu um jovem Isaac Newton.<br>
+                Enquanto ele imaginava, debaixo de uma árvore,<br>
+                a maçã caiu.</p>
+
+                <p>Ai, ele pensou:<br>
+                Não dançou.<br>
+                Não flutuou.<br>
+                Caiu em linha reta,<br>
+                como se uma mão invisível a puxasse.</p>
+
+                <p>Isaac, sem perceber,<br>
+                pensou com tanta clareza<br>
+                que sua mente criou uma gaiola para o universo.<br>
+                Ele não apenas descreveu a gravidade<br>
+                mas a criou.</p>
+
+                <p>No mesmo instante em que a fórmula foi concebida,<br>
+                crianças despencaram do céu.<br>
+                As casas de poesia se desfizeram em pó.</p>
+
+                <p>Daquela noite, ninguém mais conseguiu voar.<br>
+                Porque agora, para voar,<br>
+                precisava mais do que pensamentos:<br>
+                combustível, asa.</p>
+
+                <p>A imaginação tornou-se inofensiva.<br>
+                E assim, o mundo ganhou chão<br>
+                mas perdeu o céu que morava dentro de nós.</p>
+            </div>
+            
+            <div class="author">— Edilson JS</div>
+            
+            <div class="footer">
+                Compartilhe sua poesia com o mundo • ✨
+            </div>
+        </div>
+
+        <!-- Banner de anúncio no rodapé -->
+        <div class="ad-banner">
+            <h3>ESPAÇO PARA ANÚNCIO</h3>
+            <p>Insira aqui seu banner publicitário ou mensagem promocional</p>
+        </div>
+    </div>
+</body>
+</html>
